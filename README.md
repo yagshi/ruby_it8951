@@ -1,35 +1,27 @@
 # RubyIt8951
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/ruby_it8951`. To experiment with that code, run `bin/console` for an interactive prompt.
+## About
 
-TODO: Delete this and the text above, and describe your gem
+This gem is for [Waveshare Electronics](https://www.waveshare.com "Waveshare website")' IT-8951 controller based EPD (e-paper device) with Raspberry Pi. 
 
-## Installation
+You can easily control EPD with simple code.
 
-Add this line to your application's Gemfile:
+## Requirement
 
-```ruby
-gem 'ruby_it8951'
+ - Native Library for Raspberry Pi [epd_it8950](https://github.com/yagshi/epd_it8951)
+ 
+ - [FFI](https://github.com/ffi/ffi)
+
+
+## Example
+
+```Ruby
+require 'ruby_it8951'
+
+IT8951.init
+info = IT8951.get_device_info  # => [width, height, addr, "fw ver", "lut ver"]
+img = (0..15).inject([]){|a, i| a + [i * 16] * 100}
+IT8951.transfer_image(20, 10, 100, 16, img)
+IT8951.display_area(0, 0, info[0], info[1], 2)
 ```
 
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install ruby_it8951
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake ` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/ruby_it8951.
