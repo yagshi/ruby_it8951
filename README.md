@@ -12,6 +12,7 @@ You can easily control EPD with simple code.
  
  - [FFI](https://github.com/ffi/ffi)
 
+ - root privileges (It crushes if you're not root. :-p)
 
 ## Example
 
