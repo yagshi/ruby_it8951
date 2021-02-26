@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["yagshi"]
   spec.email         = ["yagshi@live.com"]
 
-  spec.summary       = "Control WaveShare's EPD (e-paper display) with IT-8951 controller"
-  spec.description   = "This is a very simple gem to handle several IT-8951 based EPDs.  It simply transfers image data, and update EPD screen of specific area."
+  spec.summary       = "Control IT-8951 based EPD on Raspberry Pi"
+  spec.description   = "This is a very simple gem for Raspberry Pi to handle several IT-8951 based EPDs.  It simply transfers image data, and update EPD screen of specific area."
   spec.homepage      = "https://github.com/yagshi/ruby_it8951"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.4.0")
 
