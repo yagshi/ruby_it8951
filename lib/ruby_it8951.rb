@@ -17,6 +17,8 @@ module IT8951
   module IT8951_P
     extend FFI::Library
     ffi_lib :it8951
+    attach_function :init, :it8951_init, [], :int
+    attach_function :is_busy, :it8951_is_busy, [], :int
     attach_function :get_device_info, :it8951_get_device_info, [], DeviceInfo.by_value
     attach_function :transfer_image, :it8951_transfer_image, [:int, :int, :int, :int, :pointer], :void
   end
@@ -24,9 +26,17 @@ module IT8951
 
   extend FFI::Library
   ffi_lib :it8951
-  attach_function :init, :it8951_init, [], :int
   attach_function :display_area, :it8951_display_area, [:int, :int, :int, :int, :int], :void
 
+  # true if success
+  def init
+    if IT8951_P.init == 0 then true else false end
+  end
+
+  def busy?
+    if IT8951_P.is_busy == 0 then false else true end
+  end
+  
   def get_device_info
     d = IT8951_P.get_device_info
     [d[:panelW], d[:panelH], d[:imgBufAddrL] + d[:imgBufAddrH] * 256, d[:fwVersion].to_s, d[:lutVersion].to_s]
@@ -41,4 +51,6 @@ module IT8951
   
   module_function :get_device_info
   module_function :transfer_image
+  module_function :init
+  module_function :busy?
 end
