@@ -1,4 +1,4 @@
-# RubyIt8951
+# ruby_it8951
 
 ## About
 
@@ -6,13 +6,13 @@ This gem is for [Waveshare Electronics](https://www.waveshare.com "Waveshare web
 
 You can easily control EPD with simple code.
 
-## Requirement
+## Requirements
 
  - Native Library for Raspberry Pi [epd_it8950](https://github.com/yagshi/epd_it8951)
  
  - [FFI](https://github.com/ffi/ffi)
 
- - root privileges (It crushes if you're not root. :-p)
+ - root privileges (It crashes if you're not root. :-p)
 
 ## Example
 
